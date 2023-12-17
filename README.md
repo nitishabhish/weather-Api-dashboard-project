@@ -1,7 +1,7 @@
 # weather-Api-dashboard-project
 Django API to get data from Open weather API for displaying data on webpage using React
 
-in backend_django directory
+A) in backend_django directory
 
 Django API
 commands:
@@ -14,13 +14,13 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CTRL-BREAK. "
 
 
-in frontend_react directory
+B) in frontend_react directory
 React
 command:
 1. npm install
 2. npm start
 
-for unit testing 
+c) for unit testing 
 
 in main directory:
 command:
