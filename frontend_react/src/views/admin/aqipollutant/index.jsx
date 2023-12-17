@@ -6,22 +6,7 @@ import { Box, Button, Table, Tbody, Td, Th, Thead, Tr,AlertDialog,
   AlertDialogContent,
   AlertDialogOverlay,
    } from "@chakra-ui/react";
-const getQualitativeName = (aqi) => {
-  switch (aqi) {
-    case 1:
-      return "Good";
-    case 2:
-      return "Fair";
-    case 3:
-      return "Moderate";
-    case 4:
-      return "Poor";
-    case 5:
-      return "Very Poor";
-    default:
-      return ""; // Handle other cases as needed
-  }
-};
+import API_URLS from '../../.././config';
 
 const getQualitativeNamePollutants = (pollutant, concentration) => {
   switch (pollutant) {
@@ -38,9 +23,9 @@ const getQualitativeNamePollutants = (pollutant, concentration) => {
     case 'CO':
       return getQualitativeScore(concentration, [0, 4400], [4400, 9400], [9400, 12400], [12400, 15400], '⩾15400');
     case 'AQI':
-      return getQualitativeScore(concentration, [0, 1.1], [1.2, 2.1], [2.2, 3.1], [3.2, 4.1], '⩾4.2');
-      default:
-      return ''; // Handle other cases as needed
+      return getQualitativeScore(concentration, [0, 1.1], [1.1, 2.1], [2.1, 3.1], [3.1, 4.1], [4.1, 5.1]);
+    default:
+      return ''; 
   }
 };
 
@@ -88,7 +73,7 @@ const WeatherInfo = () => {
   };
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/weather/aqi?city_name=${cityName}`);
+      const response = await fetch(`${API_URLS.BASE_URL}/aqi?city_name=${cityName}`);
       const data = await response.json();
       const newWeatherData = {
         cityName,
@@ -131,7 +116,6 @@ const WeatherInfo = () => {
             <Tr>
               <Th>City Name</Th>
               <Th>AQI</Th>
-              {/* <Th>Value</Th> */}
               <Th>CO</Th>
               <Th>NO</Th>
               <Th>NO2</Th>
@@ -148,9 +132,10 @@ const WeatherInfo = () => {
               <Tr key={index}>
                 <Td>{weatherData.cityName}</Td>
                 <Td style={{ padding: '0.5rem', textAlign: 'center' }}>
-                <div>{getQualitativeNamePollutants('AQI', weatherData.aqi)}</div>
-                <div>{weatherData.aqi} µg/m³</div></Td>
-                              {/* <Td>{getQualitativeName(weatherData.aqi)}</Td> */}
+                  <div>{getQualitativeNamePollutants('AQI', weatherData.aqi)}</div>
+                  <div>{weatherData.aqi}</div>
+                </Td>
+                              
                 <Td style={{ padding: '0.5rem', textAlign: 'center' }}>
                 <div>{getQualitativeNamePollutants('CO', weatherData.co)}</div>
                 <div>{weatherData.co} µg/m³</div>

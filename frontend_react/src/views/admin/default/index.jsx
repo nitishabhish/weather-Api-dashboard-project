@@ -14,7 +14,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import ReactApexChart from "react-apexcharts";
 // Import ApexCharts components for the pie chart
 import ReactApexPieChart from "react-apexcharts";
-
+import API_URLS from '../../.././config';
 const WeatherChart = () => {
   const [weatherList, setWeatherList] = useState([]);
   const [inputCityName, setInputCityName] = useState("");
@@ -24,7 +24,7 @@ const WeatherChart = () => {
 
   const fetchData = () => {
     setCityName(inputCityName);
-    const apiUrl = "http://127.0.0.1:8000/weather/historic";
+    const apiUrl = `${API_URLS.BASE_URL}/historic`;
     const startTimestamp = Math.floor(startDateTime.getTime() / 1000);
     const endTimestamp = Math.floor(endDateTime.getTime() / 1000);
 

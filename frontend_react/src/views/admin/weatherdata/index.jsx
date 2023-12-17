@@ -14,7 +14,7 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
-
+import API_URLS from '../../.././config';
 const WeatherApp = () => {
   const { colorMode } = useColorMode();
   const [cityName, setCityName] = useState("");
@@ -30,7 +30,7 @@ const WeatherApp = () => {
 
   const fetchWeatherData = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/weather/weather_data?city_name=${cityName}`);
+      const response = await fetch(`${API_URLS.BASE_URL}/weather_data?city_name=${cityName}`);
       const data = await response.json();
       setWeatherData((prevData) => [...prevData, { city: cityName, ...data }]);
       setError(null);

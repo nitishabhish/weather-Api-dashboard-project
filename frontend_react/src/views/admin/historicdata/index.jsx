@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import API_URLS from '../../.././config';
 const WeatherTable = () => {
   const [weatherList, setWeatherList] = useState([]);
   const [error, setError] = useState(null);
@@ -32,7 +32,7 @@ const WeatherTable = () => {
     setCityName(inputCityName);
 
     // Define the API endpoint with city name, start, and end dates
-    const apiUrl = "http://127.0.0.1:8000/weather/historic";
+    const apiUrl = `${API_URLS.BASE_URL}/historic`;
 
     // Convert start and end date to timestamps
     const startTimestamp = Math.floor(startDateTime.getTime() / 1000);
