@@ -8,6 +8,11 @@ commands:
 1. pip install -r requirements.txt
 2. python manage.py runserver
 
+you will get below info in terminals
+" Django version 4.2.6, using settings 'weather_app.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK. "
+
 
 in frontend_react directory
 React
