@@ -1,5 +1,5 @@
 # weather-Api-dashboard-project
-Django API to get data from Open weather API and display data on webpage using React
+Django API to get data from Open weather API for displaying data on webpage using React
 
 in backend_django directory
 
